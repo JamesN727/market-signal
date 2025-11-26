@@ -6,7 +6,7 @@ sentiment_analyser = pipeline('text-classification', model='ProsusAI/finbert') #
 def get_article(url):
     download = trafilatura.fetch_url(url) #Retrieves article from url
     if download is None:
-        return "Error: Unable to fetch the URL."
+        return None
     text = trafilatura.extract(download) #Extracts the text from the article
     return text
 

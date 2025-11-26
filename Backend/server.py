@@ -23,11 +23,11 @@ class ResponseData(BaseModel):
 
 
 @app.post("/analyse", response_model=ResponseData)
-def analyse_url(data: RequestData):
+async def analyse_url(data: RequestData):
     link = data.url
     text = get_article(link)
     if not text: #Scrape failure
-        raise HTTPException(status_code=400, response="Could not scrape URL")
+        raise HTTPException(status_code=400, detail="Could not scrape URL")
     result = get_sentiment(text)
     return {
         "title": "Article Title",

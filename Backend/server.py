@@ -19,6 +19,7 @@ class ResponseData(BaseModel):
     title: str
     sentiment: str
     score: float
+    markets: list[str]
     
 
 
